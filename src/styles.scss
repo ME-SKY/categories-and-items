@@ -1,0 +1,18 @@
+$primary-color: white;
+$bg: black;
+h1 {
+  color: $primary-color;
+  background-color: $bg;
+}
+
+.main{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+
+  @media only screen and (max-width: 400px) and (max-height: 600px) {
+    height: auto;
+  }
+}
