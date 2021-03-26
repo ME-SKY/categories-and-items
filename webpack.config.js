@@ -14,6 +14,7 @@ const config = {
     filename: '[name].[contenthash].js'
   },
   devServer: {
+    historyApiFallback: true,
     contentBase: './dist'
   },
   plugins: [
@@ -23,9 +24,9 @@ const config = {
     new HtmlWebpackPlugin({
       appMountId: 'app',
       filename: 'index.html',
-      template: './src/index.html'
+      template: './src/public/index.html'
     }),
-    new CleanWebpackPlugin()
+    // new CleanWebpackPlugin()
   ],
   module: {
     rules: [

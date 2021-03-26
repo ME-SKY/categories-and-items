@@ -1,0 +1,23 @@
+.categories{
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  gap: 1.4em;
+}
+
+.category-item{
+  cursor: default;
+  //user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: snow;
+  filter: drop-shadow(0px 1px 2px #9f9edd);
+  min-width: 400px;
+  height: 40px;
+  border-radius: 4px;
+
+  &:hover{
+    background: rgba(#9f9edd, 0.3);
+  }
+}
