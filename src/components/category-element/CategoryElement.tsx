@@ -23,8 +23,7 @@ function CategoryElement() {
             if(currentCategory && currentCategory.elements){
                 const elementIs = currentCategory.elements.find((item: IElement) => item.name === element || item.id == element);
                     dispatch(getElement(`${currentCategory.url}/${elementIs ? elementIs.url : ''}`,
-                        (data: any) =>{},
-                        (res: any) =>{
+                        (res: Response) =>{
                             dispatch(setError({
                                 errorStatus: res.status,
                                 url: res.url,

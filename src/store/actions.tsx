@@ -12,12 +12,10 @@ import {
 
 import {IError} from "../interfaces/IError";
 
-export function getCategories (successCb?: Function,
-                               notFoundCb?: Function ,
-                               smWentWrong?: Function ) {
+export function getCategories (smWentWrong?: Function ) {
     return {
         type: GET_CATEGORIES,
-        payload: {successCb: successCb, notFoundCb: notFoundCb, smWentWrong: smWentWrong}
+        payload: {smWrongFn: smWentWrong}
     }
 }
 
@@ -27,24 +25,22 @@ export function getElements () {
     }
 }
 
-export function getCategory (categoryUrl: string, cb?: Function, somethingWrongCb?: Function) {
+export function getCategory (categoryUrl: string, smWrongFn?: Function) {
     return {
         type: GET_CATEGORY,
         payload: {
             categoryUrl: categoryUrl,
-            successCb: cb,
-            smWentWrong: somethingWrongCb
+            smWrongFn: smWrongFn
         }
     }
 }
 
-export function getElement (elementFullUrl: string, cb?: Function, somethingWrongCb?: Function) {
+export function getElement (elementFullUrl: string, smWrongFn?: Function) {
     return {
         type: GET_ELEMENT,
         payload: {
             elementFullUrl: elementFullUrl,
-            successCb: cb,
-            smWentWrong: somethingWrongCb
+            smWrongFn: smWrongFn
         }
     }
 }

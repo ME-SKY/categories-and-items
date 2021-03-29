@@ -16,8 +16,7 @@ function* sagaGetCategory(action: any) {
         // @ts-ignore
         const payload = yield call(ApiRequests.fetchCategory,
             action.payload.categoryUrl,
-            action.payload.successCb,
-            action.payload.smWentWrong);
+            action.payload.smWrongFn);
         yield put(requestCategory(payload))
     } catch (e) {
         console.log(e)
@@ -29,9 +28,7 @@ function* sagaGetAllCategories(action: any) {
     try {
         // @ts-ignore
         const payload = yield call(ApiRequests.fetchCategories,
-            action.payload.successCb,
-            action.payload.notFoundCb,
-            action.payload.smWentWrong);
+            action.payload.smWrongFn);
         yield put(requestCategories(payload))
     } catch (e) {
         console.log(e)
@@ -43,8 +40,7 @@ function* sagaGetElement(action: any) {
         // @ts-ignore
         const payload = yield call(ApiRequests.fetchElement,
             action.payload.elementFullUrl,
-            action.payload.successCb,
-            action.payload.smWentWrong);
+            action.payload.smWrongFn);
         yield put(requestElement(payload))
     } catch (e) {
         console.log(e)

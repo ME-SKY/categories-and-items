@@ -12,26 +12,31 @@ const standardHandeDataFunction = (data: any) => {
 };
 
 export const ApiRequests = {
-    fetchCategories: async function(cb: Function,
-                                    notFoundFunc: Function = notFound,
-                                    somethingWentWrongFunc: Function = somethingWrong ){
-        const res = await fetch('api/v1.0/categories.json', {
+    fetchCategories: async function(smWrongFn: Function = somethingWrong ){
+        const res = await fetch('api/v1.0/categries.json', {
                     headers: {
                         'Content-Type': 'application/json'
                     }
                 });
         if(!res.ok && res.status === 404){
-            notFoundFunc(res);
+            smWrongFn(res);
             return;
         }
 
-        const data = await res.json();
-        cb(data);
-        return data;
+        try {
+            console.log('try catch workin')
+            const data = await res.json();
+            return data;
+        } catch (e) {
+            smWrongFn(res);
+            console.log('catch block works now');
+            console.log(e)
+        }
+
+        // const data = await res.json();
+        // return data;
     },
-    fetchCategory: async (categoryUrl: string,
-                          cb: Function = standardHandeDataFunction,
-                          somethingWentWrongCb: Function = somethingWrong) => {
+    fetchCategory: async (categoryUrl: string, smWrongFn: Function = somethingWrong) => {
         const res = await fetch(`api/v1.0/${categoryUrl}.json`, {
             headers: {
                 'Content-Type': 'application/json'
@@ -39,32 +44,44 @@ export const ApiRequests = {
         });
 
         if(!res.ok && res.status === 404){
-            somethingWentWrongCb(res);
+            smWrongFn(res);
             return;
         }
 
-        const data = await res.json();
-        cb(data);
+        try {
+            console.log('try catch workin')
+            const data = await res.json();
+            return data;
+        } catch (err) {
+            console.log('catch block works now');
+            console.log(err)
+        }
 
-        return data;
+        // cb(data);
+
+
     },
-    fetchElement: async (elementFullUrl: string,
-                         successCb: Function = standardHandeDataFunction,
-                         smWrongCb: Function = somethingWrong) => {
+    fetchElement: async (elementFullUrl: string, smWrongFn: Function = somethingWrong) => {
         const res = await fetch(`api/v1.0/${elementFullUrl}.json`, {
             headers: {
                 'Content-Type': 'application/json'
             }
         });
 
+        try {
+            const data = await res.json();
+            return data;
+        } catch (e) {
+            console.log('catch block works now');
+            console.log(e)
+        }
+
         if(!res.ok && res.status === 404){
-            smWrongCb(res);
+            smWrongFn(res);
             return;
         }
 
-        const data = await res.json();
-        successCb(data);
 
-        return data;
+
     }
 };

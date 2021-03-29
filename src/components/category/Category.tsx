@@ -19,8 +19,7 @@ function Category() {
 
             const findedCat = categories.find((cat: ICategory) => cat.id == category || cat.name === category);
             const categoryUrl = findedCat ? findedCat.url : category;
-            dispatch(getCategory(categoryUrl, (data: any) => {
-            }, (res: any) => {
+            dispatch(getCategory(categoryUrl,  (res: any) => {
                 dispatch(setError({
                         errorStatus: res.status,
                         url: res.url,

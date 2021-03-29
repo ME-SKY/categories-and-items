@@ -14,8 +14,7 @@ function App() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getCategories((data: any) => {
-            }, (res: any) =>{
+        dispatch(getCategories( (res: any) =>{
                 dispatch(setError({
                     errorStatus: res.status,
                     url: res.url,
