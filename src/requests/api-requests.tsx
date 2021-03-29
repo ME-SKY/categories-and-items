@@ -13,7 +13,7 @@ const standardHandeDataFunction = (data: any) => {
 
 export const ApiRequests = {
     fetchCategories: async function(smWrongFn: Function = somethingWrong ){
-        const res = await fetch('api/v1.0/categries.json', {
+        const res = await fetch('api/v1.0/categories.json', {
                     headers: {
                         'Content-Type': 'application/json'
                     }
