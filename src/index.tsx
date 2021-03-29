@@ -16,9 +16,8 @@ const saga = createSagaMiddleware();
 // @ts-ignore
 const store = createStore(rootReducer, compose(
     //@ts-ignore
-    applyMiddleware(thunk, saga),
+    applyMiddleware(thunk, saga)
     //@ts-ignore
-   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 ));
 
 saga.run(sagaWatcher);
