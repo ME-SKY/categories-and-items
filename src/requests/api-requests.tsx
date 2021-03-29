@@ -1,87 +1,62 @@
-const notFound =  (res: Response) => {
-        console.log('not found!');
-        console.log(res);
+const somethingWrong = (res: any) => {
+    console.log('Something went wrong! ', res);
 };
 
-const somethingWrong = (err: any) => {
-    console.log('Something went wrong! ', err);
-};
-
-const standardHandeDataFunction = (data: any) => {
-    console.log('Data is: ', data);
+const baseUrl: string = 'api/v1.0/';
+const fakeNotFoundObject = {
+    status: 404,
+    statusText: 'Requested resource not founded',
 };
 
 export const ApiRequests = {
     fetchCategories: async function(smWrongFn: Function = somethingWrong ){
-        const res = await fetch('api/v1.0/categories.json', {
+        const res = await fetch(`${baseUrl}categories.json`, {
                     headers: {
                         'Content-Type': 'application/json'
                     }
                 });
-        if(!res.ok && res.status === 404){
-            smWrongFn(res);
-            return;
-        }
+
+        let data: any;
 
         try {
-            console.log('try catch workin')
-            const data = await res.json();
-            return data;
+            data = await res.json();
         } catch (e) {
-            smWrongFn(res);
-            console.log('catch block works now');
-            console.log(e)
+            smWrongFn(fakeNotFoundObject);
         }
 
-        // const data = await res.json();
-        // return data;
+        return data;
     },
     fetchCategory: async (categoryUrl: string, smWrongFn: Function = somethingWrong) => {
-        const res = await fetch(`api/v1.0/${categoryUrl}.json`, {
+        const res = await fetch(`${baseUrl}${categoryUrl}.json`, {
             headers: {
                 'Content-Type': 'application/json'
             }
         });
 
-        if(!res.ok && res.status === 404){
-            smWrongFn(res);
-            return;
-        }
+        let data: any;
 
         try {
-            console.log('try catch workin')
-            const data = await res.json();
-            return data;
+            data = await res.json();
         } catch (err) {
-            console.log('catch block works now');
-            console.log(err)
+            smWrongFn(fakeNotFoundObject);
         }
 
-        // cb(data);
-
-
+        return data;
     },
     fetchElement: async (elementFullUrl: string, smWrongFn: Function = somethingWrong) => {
-        const res = await fetch(`api/v1.0/${elementFullUrl}.json`, {
+        const res = await fetch(`${baseUrl}${elementFullUrl}.json`, {
             headers: {
                 'Content-Type': 'application/json'
             }
         });
 
+        let data: any;
+
         try {
-            const data = await res.json();
+            data = await res.json();
             return data;
         } catch (e) {
-            console.log('catch block works now');
-            console.log(e)
+            smWrongFn(fakeNotFoundObject)
         }
-
-        if(!res.ok && res.status === 404){
-            smWrongFn(res);
-            return;
-        }
-
-
-
     }
 };

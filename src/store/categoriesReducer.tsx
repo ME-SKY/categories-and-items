@@ -9,18 +9,16 @@ const initialState = {
 export const categoriesReducer = (state = initialState, action: any) => {
     switch (action.type) {
         case REQUEST_CATEGORIES:
-            console.log('REQUEST_CATEGORIES ACTION');
-            //check and prove that we dont push an objects that not uniq by content
-            const allCategories = state.categories.concat(action.payload as ICategory[]);
-            console.log(allCategories);
-            const categoriesUniqIds = [...new Set(allCategories
-                    .map(cat => cat.id)
-            )];
-            console.log(categoriesUniqIds);
-            const uniqCategories = allCategories.filter(cat => categoriesUniqIds.includes(cat.id));
+
+            //add only new categories to preserve uniqueness
+            let categoriesToAdd: ICategory[] = [];
+            for (let payloadCat of action.payload){
+                state.categories.every(cat => cat.id !== payloadCat.id) && categoriesToAdd.push(payloadCat);
+            }
+
             return {
                 ...state,
-                categories: uniqCategories
+                categories: state.categories.concat(categoriesToAdd)
             };
         case REQUEST_CATEGORY:
             return {

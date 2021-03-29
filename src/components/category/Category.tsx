@@ -13,7 +13,22 @@ function Category() {
     const categoryWithElements = useSelector((state: RootStateOrAny) => state.categories.currentCategory);
 
     useEffect(() => {
-        (categories.length === 0) && dispatch(getCategories());
+        (categories.length === 0) && dispatch(getCategories((res: Response) => {
+            if(res.status !== 200){
+                dispatch(setError({
+                        errorStatus: res.status,
+                        url: res.url,
+                        errorText: res.statusText
+                    })
+                );
+            } else {
+                dispatch(setError({
+                        errorText: 'Not found, something wrong'
+                    })
+                );
+            }
+            history.push('/not-found')
+        }));
 
         if (categories.length > 0) {
 

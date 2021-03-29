@@ -17,8 +17,15 @@ function CategoryElement() {
     const categories = useSelector((state: RootStateOrAny) => state.categories.categories);
 
     useEffect(() => { //TODO refactor this, too many ifs
-        (categories.length === 0) && dispatch(getCategories(() => {console.log('succ')}));
-        if(categories.length > 0  && !elementInfo.id){
+        (categories.length === 0) && dispatch(getCategories((res: any) => {
+            dispatch(setError({
+                errorStatus: res.status,
+                url: res.url,
+                errorText: res.statusText})
+            );
+            history.push('/not-found')
+        }));
+        if(categories.length > 0  && (!elementInfo || !elementInfo.id)){
             const currentCat = categories.find((cat: ICategory) => cat.name === category);
             if(currentCategory && currentCategory.elements){
                 const elementIs = currentCategory.elements.find((item: IElement) => item.name === element || item.id == element);
@@ -32,13 +39,22 @@ function CategoryElement() {
                             history.push('/not-found')
                         }));
             } else {
-                dispatch(getCategory(currentCat.url))
+                dispatch(getCategory(currentCat.url, (res: any) => {
+                    dispatch(setError({
+                        errorStatus: res.status,
+                        url: res.url,
+                        errorText: res.statusText})
+                    );
+                    history.push('/not-found')
+                }))
             }
         }
 
     }, [currentCategory, elementInfo, categories]);
 
     return (
+        <>
+        {elementInfo &&
         <div className="category-element">
             <div className="name">
                 <h3>
@@ -49,7 +65,8 @@ function CategoryElement() {
             <div className="wiki">
                 <a href={elementInfo.wikiUrl} rel="noopener noreferrer" target="_blank">{elementInfo.name}</a>
             </div>
-        </div>
+        </div>}
+        </>
     )
 }
 

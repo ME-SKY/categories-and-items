@@ -12,16 +12,10 @@ import {
 
 import {IError} from "../interfaces/IError";
 
-export function getCategories (smWentWrong?: Function ) {
+export function getCategories (smWrongFn?: Function ) {
     return {
         type: GET_CATEGORIES,
-        payload: {smWrongFn: smWentWrong}
-    }
-}
-
-export function getElements () {
-    return {
-        type: GET_ELEMENTS
+        payload: {smWrongFn: smWrongFn}
     }
 }
 
