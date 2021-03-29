@@ -18,9 +18,9 @@ const config = {
     contentBase: './dist'
   },
   plugins: [
-    // new CopyPlugin({
-    //   patterns: [{ from: 'src/index.html' }],
-    // }),
+    new CopyPlugin({
+      patterns: [{ from: 'src/public/test-data' }],
+    }),
     new HtmlWebpackPlugin({
       appMountId: 'app',
       filename: 'index.html',

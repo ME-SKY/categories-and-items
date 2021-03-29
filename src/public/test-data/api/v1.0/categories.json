@@ -1,0 +1,27 @@
+[
+  {
+    "id":1,
+    "name":"cat1",
+    "url":"url-for-category-1"
+  },
+  {
+    "id":2,
+    "name":"cat2",
+    "url":"url-for-category-2"
+  },
+  {
+    "id":3,
+    "name":"cat3",
+    "url":"url-for-category-3"
+  },
+  {
+    "id":4,
+    "name":"cat4",
+    "url":"url-for-category-4"
+  },
+  {
+    "id":5,
+    "name":"cat5",
+    "url":"url-for-category-5"
+  }
+]

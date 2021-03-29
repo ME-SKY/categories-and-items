@@ -1,0 +1,21 @@
+{
+  "id":1,
+  "name":"cat1",
+  "url":"url-for-category-1",
+  "shortDescription":"Some short description",
+  "description":"Description, description description description description description description description description description description",
+  "elements":[
+    {
+      "id":1,
+      "name":"elem1",
+      "url":"elem-some-url-1",
+      "wikiUrl":"some wikiUrl"
+    },
+    {
+      "id":2,
+      "name":"elem2",
+      "url":"elem-some-url-2",
+      "wikiUrl":"some wikiUrl"
+    }
+  ]
+}

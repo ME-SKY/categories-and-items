@@ -1,17 +1,22 @@
-import {CategoryItem, ICategory} from "../category/Category";
-import {GET_CATEGORIES, GET_ELEMENTS} from "./types";
+import {GET_ELEMENTS, REQUEST_ELEMENT} from "./types";
+import {IElement} from "../interfaces/IElement";
 
 const initialState = {
-    categoryItems: [] as CategoryItem[]
+    elements: [] as IElement[],
+    currentElement: {} as IElement
 };
 
-// @ts-ignore
-export const elementsReducer = (state = initialState, action) => {
+export const elementsReducer = (state = initialState, action: any) => {
     switch (action.type) {
         case GET_ELEMENTS:
             return {
                 ...state,
-                categoryItems: state.categoryItems.concat(action.payload)
+                elements: state.elements.concat(action.payload as IElement[])
+            };
+        case REQUEST_ELEMENT:
+            return {
+                ...state,
+                currentElement: action.payload as IElement
             };
         default: return state;
     }

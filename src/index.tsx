@@ -7,35 +7,32 @@ import {Provider} from "react-redux";
 import {rootReducer} from "./store/rootReducer";
 import {applyMiddleware} from "redux";
 import thunk from "redux-thunk";
+import {BrowserRouter} from "react-router-dom";
+import createSagaMiddleware from 'redux-saga'
+import {sagaWatcher} from "./store/sagas";
+
+const saga = createSagaMiddleware();
 
 // @ts-ignore
 const store = createStore(rootReducer, compose(
     //@ts-ignore
-    applyMiddleware(thunk),
+    applyMiddleware(thunk, saga),
     //@ts-ignore
-   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
+   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+));
 
-// import reportWebVitals from './reportWebVitals';
-// import {Store} from "./store/store";
-
-// const store = new Store([]);
-// @ts-ignore
-// const StoreContext = createContext<Store>([]);
-// export const useStore = (): Store => useContext(StoreContext);
+saga.run(sagaWatcher);
 
 // @ts-ignore
 ReactDOM.render(
     //@ts-ignore
     <Provider store={store}>
-        <App/>
+        <BrowserRouter> <App/></BrowserRouter>
+
     </Provider>,
     document.getElementById('app')
 );
 
-{/*<StoreContext.Provider value={store}>*/
-}
-{/*    <App/>*/
-}
 // </StoreContext.Provider>,
 
 // If you want to start measuring performance in your app, pass a function

@@ -1,21 +1,17 @@
 .category{
+  box-sizing: border-box;
+  padding: 5px;
   width: 80%;
   display: flex;
   flex-flow: column nowrap;
-  border: 1px solid black;
+  box-shadow: 0px 1px 3px 1px #01010136;
   border-radius: 4px;
-  //max-height: 700px;
-  //max-width: 600px;
 }
 
 .category-info{
   display: flex;
   flex-flow: column nowrap;
   gap: 1em;
-
-  //.category-name{
-  //
-  //}
 }
 
 .category-elements{
@@ -29,8 +25,8 @@
 .element{
   width: 300px;
   height: 150px;
-  border: 1px solid black;
   border-radius: 4px;
+  box-shadow: 0px 1px 3px 1px #01010136;
 
   @media screen and (max-width: 900px){
     width: 200px;
