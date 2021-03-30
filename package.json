@@ -14,7 +14,9 @@
     "deploy": "webpack --mode production && gh-pages -d dist"
   },
   "dependencies": {
+    "babel-loader": "^8.2.2",
     "react": "^17.0.2",
+    "react-app-polyfill": "^2.0.0",
     "react-dom": "^17.0.2",
     "react-hot-loader": "^4.13.0",
     "react-redux": "^7.2.3",
@@ -24,6 +26,10 @@
     "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.13.14",
+    "@babel/core": "^7.13.14",
+    "@babel/preset-env": "^7.13.12",
+    "@babel/preset-react": "^7.13.13",
     "@hot-loader/react-dom": "^17.0.1+4.13.0",
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.3",
@@ -34,6 +40,7 @@
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.3.1",
     "node-sass": "^5.0.0",
+    "regenerator-runtime": "^0.13.7",
     "sass-loader": "^11.0.1",
     "style-loader": "^2.0.0",
     "ts-loader": "^8.0.18",

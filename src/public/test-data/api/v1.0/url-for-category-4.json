@@ -7,13 +7,13 @@
   "elements":[
     {
       "id":7,
-      "name":"elem7",
+      "name":"Poehlman House (Syracuse, New York)",
       "url":"elem-some-url-7",
       "wikiUrl":"some wikiUrl"
     },
     {
       "id":8,
-      "name":"elem8",
+      "name":"Amos Abbott",
       "url":"elem-some-url-8",
       "wikiUrl":"some wikiUrl"
     }

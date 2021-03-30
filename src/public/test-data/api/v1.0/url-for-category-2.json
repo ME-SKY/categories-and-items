@@ -7,13 +7,13 @@
   "elements":[
     {
       "id":3,
-      "name":"elem3",
+      "name":"Ljuboten",
       "url":"elem-some-url-3",
       "wikiUrl":"some wikiUrl"
     },
     {
       "id":4,
-      "name":"elem4",
+      "name":"Anne Chambers",
       "url":"elem-some-url-4",
       "wikiUrl":"some wikiUrl"
     }

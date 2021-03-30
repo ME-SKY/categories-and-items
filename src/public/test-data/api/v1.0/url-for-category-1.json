@@ -7,13 +7,13 @@
   "elements":[
     {
       "id":1,
-      "name":"elem1",
+      "name":"Kyle Bennet",
       "url":"elem-some-url-1",
       "wikiUrl":"some wikiUrl"
     },
     {
       "id":2,
-      "name":"elem2",
+      "name":"Guangdong Ocean University",
       "url":"elem-some-url-2",
       "wikiUrl":"some wikiUrl"
     }
